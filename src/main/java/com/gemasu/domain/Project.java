@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +28,9 @@ public class Project {
 	private Collection<User>user = new ArrayList<User>();
 	@OneToMany
 	private Collection<Activity>activities = new ArrayList<Activity>();
+	@ManyToOne
+	@JoinColumn(name="organizationId")
+	private Organization organization;
 	@Enumerated 
 	private Category category;
 	
