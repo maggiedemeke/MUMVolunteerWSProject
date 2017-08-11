@@ -7,6 +7,10 @@ public class Project {
 	private String name;
 	private Date StartDate;
 	private Date endDate;
+	public Project() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 
