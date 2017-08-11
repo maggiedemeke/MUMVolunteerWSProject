@@ -28,7 +28,7 @@ public class ActivityController {
 	}
 	
 	@DeleteMapping
-	@RequestMapping("/{id}")
+	@RequestMapping("/delete/{id}")
 	public void delete(Activity activity){
 		
 	}

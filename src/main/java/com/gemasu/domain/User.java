@@ -1,5 +1,10 @@
 package com.gemasu.domain;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class User {
+	@Id
+	public int id;
 }
