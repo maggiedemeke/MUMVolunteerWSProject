@@ -1,5 +1,5 @@
 package com.gemasu.domain;
 
-public class Category {
+public enum Category {
 
 }
