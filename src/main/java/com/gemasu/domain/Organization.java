@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -16,6 +17,9 @@ public class Organization {
 	private String name;
 	@OneToMany(mappedBy="organization")
 	private List<Project> projects = new ArrayList<>();
+	@Enumerated
+	OrganizationStatus status;
+	
 	
 	public Organization() {
 		super();
@@ -43,6 +47,14 @@ public class Organization {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	public OrganizationStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrganizationStatus status) {
+		this.status = status;
 	}
 	
 	

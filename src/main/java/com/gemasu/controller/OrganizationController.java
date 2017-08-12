@@ -3,7 +3,6 @@ package com.gemasu.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gemasu.domain.Organization;
+import com.gemasu.domain.OrganizationStatus;
 import com.gemasu.service.OrganizationService;
 
 @RestController
@@ -25,9 +25,9 @@ public class OrganizationController {
 	}
 	
 	@GetMapping
-	@RequestMapping("/")
-	public List<Organization> getAll() {
-		return organizationService.getAll();
+	@RequestMapping("/status/{status}")
+	public List<Organization> getAll(OrganizationStatus status) {
+		return organizationService.getByStatus(status);
 	}
 	
 	@GetMapping
@@ -41,6 +41,15 @@ public class OrganizationController {
 		Organization newOrg = new Organization();
 		newOrg = organizationService.getById(id);
 		newOrg.setName(organization.getName());
+		organizationService.update(newOrg);
+	}
+	
+	@PutMapping
+	@RequestMapping("/project/{id}/status/{status}")
+	public void updateStatus(Integer id, OrganizationStatus status) {
+		Organization newOrg = new Organization();
+		newOrg = organizationService.getById(id);
+		newOrg.setStatus(status);
 		organizationService.update(newOrg);
 	}
 }

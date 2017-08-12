@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gemasu.domain.Organization;
+import com.gemasu.domain.OrganizationStatus;
 import com.gemasu.repository.OrganizationRepository;
 
 @Service
@@ -18,10 +19,6 @@ public class OrganizationService {
 		organizationRepository.save(organization);
 	}
 	
-	public void delete(Organization organization) {
-		organizationRepository.delete(organization);
-	}
-	
 	public void update(Organization organization){
 		organizationRepository.save(organization);
 	}
@@ -32,6 +29,9 @@ public class OrganizationService {
 	
 	public List<Organization> getAll() {
 		return organizationRepository.findAll();
+	}
+	public List<Organization> getByStatus(OrganizationStatus status) {
+		return organizationRepository.findByStatusOrderByName(status);
 	}
 	
 }
