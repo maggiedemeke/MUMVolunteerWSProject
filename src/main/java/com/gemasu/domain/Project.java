@@ -19,6 +19,9 @@ import javax.persistence.TemporalType;
 public class Project {
 	@Id @GeneratedValue
 	private int id;
+	
+	private int maxNumOfMemebers;
+	
 	private String name;
 	@Temporal(TemporalType.DATE)
 	private Date StartDate;
@@ -26,14 +29,15 @@ public class Project {
 	private Date endDate;
 	@ManyToMany
 	private Collection<User>user = new ArrayList<User>();
-	@OneToMany
+	@OneToMany(mappedBy ="project")
 	private Collection<Activity>activities = new ArrayList<Activity>();
 	@ManyToOne
 	@JoinColumn(name="organizationId")
 	private Organization organization;
 	@Enumerated 
 	private Category category;
-	
+	@Enumerated 
+	private Status status;
 	
 	public int getId() {
 		return id;
@@ -80,13 +84,31 @@ public class Project {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	public int getMaxNumOfMemebers() {
+		return maxNumOfMemebers;
+	}
+	public void setMaxNumOfMemebers(int maxNumOfMemebers) {
+		this.maxNumOfMemebers = maxNumOfMemebers;
+	}
+	public Organization getOrganization() {
+		return organization;
+	}
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
+	}
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 	public Project() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-		// TODO Auto-generated constructor stub
-	
+		
 }
 	
 	

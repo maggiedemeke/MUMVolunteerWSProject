@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.gemasu.domain.Activity;
 import com.gemasu.service.ActivityService;
 
-@Controller 
+@RestController 
 @RequestMapping("/activity")
 public class ActivityController {
 	@Autowired
