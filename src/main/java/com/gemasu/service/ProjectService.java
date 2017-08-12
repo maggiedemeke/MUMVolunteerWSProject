@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.gemasu.domain.Project;
 import com.gemasu.domain.Status;
+import com.gemasu.domain.User;
 import com.gemasu.repository.ProjectRepository;
 
 
@@ -22,8 +23,11 @@ public class ProjectService {
 	@Autowired
 	ProjectRepository projectRepository;
 	
-	
-	
+	/*
+	 * Retrieve All the projects
+	 * 
+	 * @return 	List<Project> Collection of projects
+	 */
 	public List<Project> getAllProjects(){
 		List<Project> projects = new ArrayList<Project>();
 		projectRepository.findAll()
@@ -31,6 +35,13 @@ public class ProjectService {
 		return projects;
 			
 	}
+	
+	/*
+	 * Retrieve all the projects by Status
+	 * 
+	 * @param 	status	Enum type 
+	 * @return 	List<Project> Collection of projects
+	 */
 	public List<Project> getAllActiveProjects(Status status){
 		List<Project> projects = new ArrayList<Project>();
 		projects = projectRepository.findByStatus(status);
@@ -59,6 +70,16 @@ public class ProjectService {
 	
 	public void deleteProject(int id){
 		projectRepository.delete(id);
+	}
+	
+	/*
+	 * Retrieve the projects by user
+	 * 
+	 * @param 	users 	List of users
+	 * @return 	List<Project> List of Projects
+	 */
+	public List<Project> getByUser(List<User> users){
+		return projectRepository.findByUser(users);
 	}
 	
 

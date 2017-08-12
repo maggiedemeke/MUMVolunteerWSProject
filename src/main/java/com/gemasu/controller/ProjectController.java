@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gemasu.domain.Project;
+import com.gemasu.domain.User;
+import com.gemasu.repository.UserRepository;
 import com.gemasu.service.ProjectService;
+import com.gemasu.service.UserService;
 
 @RestController
 @RequestMapping("/project")
@@ -21,6 +24,8 @@ public class ProjectController {
 
 	@Autowired
 	ProjectService projectService;
+	@Autowired
+	UserService userService;
 
 	/*
 	 * Create
@@ -29,23 +34,30 @@ public class ProjectController {
 	public void create(@RequestBody Project project) {
 		projectService.saveProject(project);
 	}
-@RequestMapping("/{id}")
+
+	@RequestMapping("/{id}")
 	public Project getProject(@PathVariable int id) {
 		Project project = projectService.getProject(id);
 		return project;
 	}
 
-@RequestMapping("/")
-public List<Project> getAllProjects()
-{  List<Project> projects = new ArrayList<Project>();
-	projects =projectService.getAllProjects();
-	return projects;
-}
-@RequestMapping("/delete/{id}")
-public void deleteProject(@PathVariable int id){
+	@RequestMapping("/")
+	public List<Project> getAllProjects() {
+		List<Project> projects = new ArrayList<Project>();
+		projects = projectService.getAllProjects();
+		return projects;
+	}
+
+	@RequestMapping("/delete/{id}")
+	public void deleteProject(@PathVariable int id) {
+
+		projectService.deleteProject(id);
+	}
 	
-
-	projectService.deleteProject(id);
+	@RequestMapping("/user/{id}")
+	public List<Project> getByUser(@PathVariable int id){
+		List<User> users = new ArrayList<>();
+		users.add(userService.getUserById(id));
+		return projectService.getByUser(users);
+	}
 }
-}
-
