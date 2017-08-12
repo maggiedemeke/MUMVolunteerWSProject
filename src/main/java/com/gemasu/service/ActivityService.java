@@ -1,13 +1,14 @@
 package com.gemasu.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gemasu.domain.Activity;
-import com.gemasu.domain.Project;
+
 import com.gemasu.repository.ActivityRepository;
 
 @Service

@@ -33,8 +33,8 @@ public class Project {
 	private Date endDate;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Project_Volenteer", joinColumns = @JoinColumn(name = "project", referencedColumnName = "id"), 
-    inverseJoinColumns = @JoinColumn(name = "user", referencedColumnName = "id"))
+    @JoinTable(name = "Project_Volenteer", joinColumns = @JoinColumn(name = "projects"), 
+    inverseJoinColumns = @JoinColumn(name = "user"))
 	private Collection<User> user = new ArrayList<User>();
 	@OneToMany(mappedBy = "project")
 	private Collection<Activity> activities = new ArrayList<Activity>();
