@@ -1,16 +1,21 @@
 package com.gemasu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gemasu.domain.Organization;
 import com.gemasu.domain.OrganizationStatus;
+import com.gemasu.domain.Project;
 import com.gemasu.service.OrganizationService;
 
 @RestController
@@ -20,26 +25,38 @@ public class OrganizationController {
 	OrganizationService organizationService;
 	
 	@PostMapping
-	public void create(Organization organization) {
+	@RequestMapping("/create")
+	public void create(@RequestBody Organization organization) {
+		System.out.println("ORG: " + organization);
+		List<Project> projects = new ArrayList<>();
+		organization.setProjects(projects);
 		organizationService.save(organization);
 	}
 	
 	@GetMapping
 	@RequestMapping("/status/{status}")
-	public List<Organization> getAll(OrganizationStatus status) {
+	public List<Organization> getAllByStatus(@PathVariable OrganizationStatus status) {
 		return organizationService.getByStatus(status);
 	}
 	
 	@GetMapping
+	@RequestMapping("/")
+	public List<Organization> getAll() {
+		return organizationService.getAll();
+	}
+	
+	@GetMapping
 	@RequestMapping("/{id}")
-	public Organization getById(Integer id) {
+	public Organization getById(@PathVariable Integer id) {
 		return organizationService.getById(id);
 	}
 	
-	@PutMapping
-	public void update(Organization organization, Integer id) {
+	@PostMapping
+	@RequestMapping("/update")
+	public void update(@RequestBody Organization organization) {
+		System.out.println("ORG: " + organization);
 		Organization newOrg = new Organization();
-		newOrg = organizationService.getById(id);
+		newOrg = organizationService.getById(organization.getId());
 		newOrg.setName(organization.getName());
 		organizationService.update(newOrg);
 	}

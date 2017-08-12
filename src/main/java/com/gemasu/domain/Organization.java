@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ public class Organization {
 	private String name;
 	@OneToMany(mappedBy="organization")
 	private List<Project> projects = new ArrayList<>();
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	OrganizationStatus status;
 	
 	
@@ -56,6 +57,13 @@ public class Organization {
 	public void setStatus(OrganizationStatus status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "Organization [id=" + id + ", name=" + name + ", projects=" + projects + ", status=" + status + "]";
+	}
+
+	
 	
 	
 	
