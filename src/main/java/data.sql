@@ -14,3 +14,4 @@ INSERT INTO `activity` (`id`, `name`, `project_id`) VALUES
 	(1, 'tutorial1', 1),
 	(2, 'tutorial2', 1),
 	(3, 'tutorial3', 1);
+
