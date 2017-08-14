@@ -1,6 +1,7 @@
 package com.gemasu.domain;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,6 +23,7 @@ public class Activity {
 	
 	private String name;
 	
+
 	
 	public Project getProject() {
 		return project;

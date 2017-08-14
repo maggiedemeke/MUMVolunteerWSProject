@@ -10,12 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class Organization {
 	@Id
 	@GeneratedValue
 	private int id;
 	private String name;
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@OneToMany(mappedBy="organization")
 	private List<Project> projects = new ArrayList<>();
 	@Enumerated(EnumType.STRING)
