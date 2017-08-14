@@ -15,26 +15,35 @@ import com.gemasu.repository.ActivityRepository;
 public class ActivityService {
 	@Autowired
 	ActivityRepository activityRepository;
-	
-	public void saveActivity(Activity activity){
+
+	public void saveActivity(Activity activity) {
 		activityRepository.save(activity);
-		
-		
+
 	}
 
-	public void updateActivity(int id, Activity activity){
+	public Activity getActivity(int id) {
+		
+		Activity activity = activityRepository.getOne(id);
+		System.out.println("ACT: " + activity);
+		return activity;
+
+	}
+
+	public void updateActivity(int id, Activity activity) {
 		activityRepository.save(activity);
-		
-		
+
 	}
-	public void removeActivity(Activity activity){
+
+	public void removeActivity(Activity activity) {
 		activityRepository.delete(activity);
-			
+
 	}
-	
-	public List<Activity> getAllActivities(int id){
-		List<Activity>activities = new ArrayList<Activity>();
+
+	public List<Activity> getAllActivities(int id) {
+		List<Activity> activities = new ArrayList<Activity>();
 		activities = activityRepository.findByProject(id);
-			return activities;
+		return activities;
 	}
+
+
 }

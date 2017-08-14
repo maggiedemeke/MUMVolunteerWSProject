@@ -18,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class Project {
 	@Id
@@ -36,8 +39,11 @@ public class Project {
     @JoinTable(name = "Project_Volenteer", joinColumns = @JoinColumn(name = "projects"), 
     inverseJoinColumns = @JoinColumn(name = "user"))
 	private Collection<User> user = new ArrayList<User>();
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "project")
 	private Collection<Activity> activities = new ArrayList<Activity>();
+	
 	@ManyToOne
 	@JoinColumn(name = "organizationId")
 	private Organization organization;
