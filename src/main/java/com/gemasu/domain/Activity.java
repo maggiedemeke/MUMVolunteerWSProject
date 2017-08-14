@@ -7,16 +7,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class Activity {
-	
-	@Id @GeneratedValue
+
+	@Id
 	public int id;
+	
 	@ManyToOne
-	@JoinColumn(name="projectId")
+	@JoinColumn(name = "projectId")
 	public Project project;
 	
 	private String name;
+	
+	
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
 	
 
 	public String getName() {
@@ -33,6 +47,15 @@ public class Activity {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Activity [id=" + id + ", project=" + project + ", name=" + name + "]";
+	}
+
+	public Activity() {
+		
 	}
 	
 
