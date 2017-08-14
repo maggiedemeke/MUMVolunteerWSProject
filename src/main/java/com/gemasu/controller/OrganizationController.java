@@ -2,6 +2,7 @@ package com.gemasu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +18,16 @@ import com.gemasu.domain.Organization;
 import com.gemasu.domain.OrganizationStatus;
 import com.gemasu.domain.Project;
 import com.gemasu.service.OrganizationService;
+import com.gemasu.service.SenderService;
 
 @RestController
 @RequestMapping("/organization")
 public class OrganizationController {
 	@Autowired
 	OrganizationService organizationService;
+	
+	@Autowired
+	private SenderService senderService;
 	
 	@PostMapping
 	@RequestMapping("/create")
@@ -42,6 +47,7 @@ public class OrganizationController {
 	@GetMapping
 	@RequestMapping("/")
 	public List<Organization> getAll() {
+		senderService.send("boot.q", "Hello Boot!");
 		return organizationService.getAll();
 	}
 	

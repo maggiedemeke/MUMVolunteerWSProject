@@ -1,8 +1,8 @@
 
 INSERT INTO `organization` (`id`, `name`, `status`) VALUES
-	(1, 'MUM', 1),
-	(2, 'WALMART', 1),
-	(3, 'LOGLIS', 0);
+	(1, 'MUM', "ACTIVE"),
+	(2, 'WALMART', "ACTIVE"),
+	(3, 'LOGLIS', "INACTIVE");
 
 
 
