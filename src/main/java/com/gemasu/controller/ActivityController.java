@@ -4,17 +4,18 @@ package com.gemasu.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.gemasu.domain.Activity;
 import com.gemasu.service.ActivityService;
 import com.gemasu.service.ProjectService;
 
-@Controller 
+@RestController
 @RequestMapping("/activity")
 public class ActivityController {
 	
@@ -44,6 +45,7 @@ public class ActivityController {
 
 	@RequestMapping("/projectactivity/{id}")
 	public List<Activity> getAllActivities(@PathVariable int id) {
+		System.out.println("Activities by Project");
 		List<Activity> activities = activityService.getAllActivities(projectService.getProject(id));
 		return activities;
 	}
