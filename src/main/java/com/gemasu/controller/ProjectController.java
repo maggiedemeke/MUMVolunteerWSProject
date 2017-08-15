@@ -1,6 +1,7 @@
 package com.gemasu.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +61,12 @@ public class ProjectController {
 		users.add(userService.getUserById(id));
 		return projectService.getByUser(users);
 	}
-}
+	
+	@RequestMapping("/usersinproject/{id}")
+	public Collection <User> getAllUsers(@PathVariable int id){
+		Collection <User>users =  projectService.getAllUsersInProject(id);
+		return users;
+			
+		
+	}
+	}
