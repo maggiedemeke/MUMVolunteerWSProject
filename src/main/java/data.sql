@@ -16,3 +16,11 @@ INSERT INTO `activity` (`id`, `name`, `project_id`) VALUES
 	(2, 'tutorial2', 1),
 	(3, 'tutorial3', 1);
 
+INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `hours`, `password`, `username`) VALUES
+	(1, 'german.andres.segura@gmail.com', 'GERMAN', 'SEGURA', '0', 'gsegura', 'gsegura');
+
+
+INSERT INTO `role` (`id`, `role`, `user_id`) VALUES
+	(1, 'MEMBER', 1),
+	(2, 'ADMIN', 1);
+	

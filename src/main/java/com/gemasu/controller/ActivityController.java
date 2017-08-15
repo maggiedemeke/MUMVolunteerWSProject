@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gemasu.domain.Activity;
 import com.gemasu.domain.Project;
 import com.gemasu.service.ActivityService;
+import com.gemasu.service.ProjectService;
 
 @RestController 
 @RequestMapping("/activity")
@@ -27,6 +28,9 @@ public class ActivityController {
 	
 	@Autowired 
 	ActivityService activityService;
+	
+	@Autowired 
+	ProjectService projectService;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void create(Activity activity){
@@ -55,7 +59,8 @@ public class ActivityController {
 
 	@RequestMapping("/projectactivity/{id}")
 	public List<Activity> getAllActivities(@PathVariable int id) {
-		List<Activity> activities = activityService.getAllActivities(id);
+		
+		List<Activity> activities = activityService.getAllActivities(projectService.getProject(id));
 			return activities;
 	}
 	

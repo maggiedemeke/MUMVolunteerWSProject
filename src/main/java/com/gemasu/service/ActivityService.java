@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gemasu.domain.Activity;
-
+import com.gemasu.domain.Project;
 import com.gemasu.repository.ActivityRepository;
 
 @Service
@@ -39,9 +39,9 @@ public class ActivityService {
 
 	}
 
-	public List<Activity> getAllActivities(int id) {
+	public List<Activity> getAllActivities(Project project) {
 		List<Activity> activities = new ArrayList<Activity>();
-		activities = activityRepository.findByProject(id);
+		activities = activityRepository.findByProject(project);
 		return activities;
 	}
 

@@ -5,12 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 @Entity
 public class Activity {
 
@@ -20,11 +21,14 @@ public class Activity {
 	
 	@ManyToOne
 	@JoinColumn(name = "projectId")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public Project project;
-	
+
 	private String name;
 	
-
+	public Activity() {
+		
+	}
 	
 	public Project getProject() {
 		return project;
@@ -33,8 +37,6 @@ public class Activity {
 	public void setProject(Project project) {
 		this.project = project;
 	}
-
-	
 
 	public String getName() {
 		return name;
@@ -57,9 +59,7 @@ public class Activity {
 		return "Activity [id=" + id + ", project=" + project + ", name=" + name + "]";
 	}
 
-	public Activity() {
-		
-	}
+	
 	
 
 }

@@ -18,9 +18,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
+@JsonIgnoreProperties(ignoreUnknown=true)
 @Entity
 public class Project {
 	@Id
@@ -38,6 +39,7 @@ public class Project {
 	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Project_Volenteer", joinColumns = @JoinColumn(name = "projects"), 
     inverseJoinColumns = @JoinColumn(name = "user"))
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Collection<User> user = new ArrayList<User>();
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
