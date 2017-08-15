@@ -9,4 +9,6 @@ import com.gemasu.domain.Project;
 
 public interface ActivityRepository extends JpaRepository<Activity, Integer> {
 	public List<Activity> findByProject(Project project);
+	
+	public void removeById(Integer id);
 }

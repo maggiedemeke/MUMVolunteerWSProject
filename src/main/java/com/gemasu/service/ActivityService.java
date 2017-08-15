@@ -3,6 +3,8 @@ package com.gemasu.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import com.gemasu.domain.Project;
 import com.gemasu.repository.ActivityRepository;
 
 @Service
+@Transactional
 public class ActivityService {
 
 	public ActivityService() {
@@ -35,6 +38,10 @@ public class ActivityService {
 		activityRepository.save(activity);
 	}
 
+	public void removeActivityById(Integer id) {
+		activityRepository.removeById(id);
+	}
+	
 	public void removeActivity(Activity activity) {
 		activityRepository.delete(activity);
 	}

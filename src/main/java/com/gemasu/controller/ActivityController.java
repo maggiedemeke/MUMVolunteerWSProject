@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,8 @@ public class ActivityController {
 	
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public void create(Activity activity){
+	public void create(@RequestBody Activity activity){
+		System.out.println("WS Activity Create: " + activity);
 		activityService.saveActivity(activity);
 	}
 	
@@ -39,8 +41,8 @@ public class ActivityController {
 	
 	@DeleteMapping
 	@RequestMapping("/delete/{id}")
-	public void delete(Activity activity){
-		
+	public void delete(@PathVariable Integer id){
+		activityService.removeActivityById(id);
 	}
 
 	@RequestMapping("/projectactivity/{id}")
