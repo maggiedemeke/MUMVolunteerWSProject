@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class Activity {
 
 	@Id
+	@GeneratedValue
 	public int id;
 	
 	@ManyToOne
