@@ -11,8 +11,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Activity {
 
-	@Id @GeneratedValue
-	public int id;
+
+	@Id
+	@GeneratedValue
+public int id;
 	
 	public String name;
 	

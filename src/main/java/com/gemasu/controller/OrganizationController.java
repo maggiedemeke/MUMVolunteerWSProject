@@ -47,7 +47,7 @@ public class OrganizationController {
 	@GetMapping
 	@RequestMapping("/")
 	public List<Organization> getAll() {
-		senderService.send("boot.q", "Hello Boot!");
+		//senderService.send("boot.q", "Hello Boot!");
 		return organizationService.getAll();
 	}
 	

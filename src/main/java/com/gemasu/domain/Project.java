@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 public class Project {
 	@Id
-	
+	@GeneratedValue
 	private int id;
 
 	private int maxNumOfMemebers;
