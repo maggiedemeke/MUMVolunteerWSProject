@@ -1,14 +1,14 @@
 
 
-INSERT INTO `organization` (`id`, `name`, `status`) VALUES
-	(1, 'MUM', "ACTIVE"),
-	(2, 'WALMART', "ACTIVE"),
-	(3, 'LOGLIS', "INACTIVE");
+INSERT INTO `organization` (`id`, `name`, `status`,`description`) VALUES
+	(1, 'MUM', "ACTIVE","IT IS ONE OF THE MOST INFLUENTIAL ORGANIZATION IN FAIRFEILD"),
+	(2, 'WALMART', "ACTIVE", "THIS MARKET IS ONE OF THE MOST CONTRIBUTING COMPANIES FOR MANY PROJECTS"),
+	(3, 'LOGLIS', "INACTIVE", "COMPANY INFORMATION HERE");
 
 
 
-INSERT INTO `project` (`id`, `start_date`, `category`, `end_date`, `max_num_of_memebers`, `name`, `status`, `organization_id`) VALUES
-(1, '2017-08-08', 'TUTOR', '2017-08-23', 10, 'ENGLISH CLASSES', 'NEW', 1);
+INSERT INTO `project` (`id`, `start_date`, `category`, `end_date`, `max_num_of_memebers`, `name`, `status`, `organization_id`,`description`) VALUES
+(1, '2017-08-08', 'TUTOR', '2017-08-23', 10, 'ENGLISH CLASSES', 'NEW', 1, 'This is a big project led by Maharishi Univeristy of Management');
 
 
 INSERT INTO `activity` (`id`, `name`, `project_id`) VALUES
