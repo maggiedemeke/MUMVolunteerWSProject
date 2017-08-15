@@ -5,9 +5,11 @@ package com.gemasu.controller;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,25 +22,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gemasu.domain.Activity;
 import com.gemasu.domain.Project;
 import com.gemasu.service.ActivityService;
+import com.gemasu.service.ProjectService;
 
-@RestController 
+@Controller 
 @RequestMapping("/activity")
 public class ActivityController {
 	
 	@Autowired 
 	ActivityService activityService;
-	
+    @Autowired
+    ProjectService projectService;
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void create(Activity activity){
 		activityService.saveActivity(activity);
 	}
 	
 	
-	@RequestMapping("/{id}")
-	public Activity getActivity(@PathVariable int id) {
-		Activity activity = activityService.getActivity(id);
-		return activity;
-	}
+
 	
 	
 	@PutMapping
@@ -55,8 +55,14 @@ public class ActivityController {
 
 	@RequestMapping("/projectactivity/{id}")
 	public List<Activity> getAllActivities(@PathVariable int id) {
-		List<Activity> activities = activityService.getAllActivities(id);
+		Project project = projectService.getProject(id);
+		List<Activity> activities = activityService.getAllActivities(project);
 			return activities;
+	}
+
+
+	public ActivityController() {
+		
 	}
 	
 	

@@ -1,7 +1,7 @@
 package com.gemasu.service;
 
 import java.util.ArrayList;
-
+import java.util.Collection;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -48,7 +48,13 @@ public class ProjectService {
 		return projects;
 	}
 	
-	
+	public Collection<User> getAllUsersInProject(int id){
+		Collection<User> user = new ArrayList<User>();
+		Project project = getProject(id);
+		user = project.getUser();
+		return user;
+		
+	}
 	
 	public void saveProject(Project project){
 		projectRepository.save(project);

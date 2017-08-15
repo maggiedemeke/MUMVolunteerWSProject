@@ -1,18 +1,22 @@
 package com.gemasu.service;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gemasu.domain.Activity;
-
+import com.gemasu.domain.Project;
 import com.gemasu.repository.ActivityRepository;
 
 @Service
 public class ActivityService {
+	
+	public ActivityService() {
+	
+	}
+
 	@Autowired
 	ActivityRepository activityRepository;
 
@@ -39,9 +43,10 @@ public class ActivityService {
 
 	}
 
-	public List<Activity> getAllActivities(int id) {
+	public List<Activity> getAllActivities(Project p) {
+		
 		List<Activity> activities = new ArrayList<Activity>();
-		activities = activityRepository.findByProject(id);
+		activities = activityRepository.findByProjectId(p);
 		return activities;
 	}
 

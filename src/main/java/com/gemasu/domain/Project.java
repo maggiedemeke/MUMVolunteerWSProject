@@ -35,9 +35,9 @@ public class Project {
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Project_Volenteer", joinColumns = @JoinColumn(name = "projects"), 
-    inverseJoinColumns = @JoinColumn(name = "user"))
+	@OneToMany
+	@JoinTable(name="userId", joinColumns = @JoinColumn(name = "ProjectId"),
+	inverseJoinColumns = @JoinColumn(name="userId"))
 	private Collection<User> user = new ArrayList<User>();
 	
 	@JsonProperty(access = Access.WRITE_ONLY)

@@ -5,25 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Activity {
 
-	@Id
+	@Id @GeneratedValue
 	public int id;
 	
+	public String name;
+	
 	@ManyToOne
-	@JoinColumn(name = "projectId")
+	@JoinColumn(name = "projectid")
 	public Project project;
-	
-	private String name;
-	
-
 	
 	public Project getProject() {
 		return project;
@@ -33,7 +28,6 @@ public class Activity {
 		this.project = project;
 	}
 
-	
 
 	public String getName() {
 		return name;
