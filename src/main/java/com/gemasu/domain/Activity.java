@@ -25,8 +25,6 @@ public class Activity {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	public Project project;
 
-	private String name;
-
 	public Activity() {
 
 	}
