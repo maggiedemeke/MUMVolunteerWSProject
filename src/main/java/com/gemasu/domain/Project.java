@@ -29,6 +29,15 @@ public class Project {
 	private int id;
 
 	private int maxNumOfMemebers;
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	private String name;
 	@Temporal(TemporalType.DATE)
@@ -42,7 +51,7 @@ public class Project {
 	private Collection<User> user = new ArrayList<User>();
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "project")
+	@OneToMany(fetch=javax.persistence.FetchType.EAGER,mappedBy = "project",cascade = CascadeType.ALL)
 	private Collection<Activity> activities = new ArrayList<Activity>();
 	
 	@ManyToOne

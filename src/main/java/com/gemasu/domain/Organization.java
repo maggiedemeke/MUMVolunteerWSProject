@@ -19,6 +19,7 @@ public class Organization {
 	@GeneratedValue
 	private int id;
 	private String name;
+	private String description;
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@OneToMany(mappedBy="organization")
 	private List<Project> projects = new ArrayList<>();
@@ -61,12 +62,23 @@ public class Organization {
 	public void setStatus(OrganizationStatus status) {
 		this.status = status;
 	}
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	@Override
 	public String toString() {
-		return "Organization [id=" + id + ", name=" + name + ", projects=" + projects + ", status=" + status + "]";
+		return "Organization [id=" + id + ", name=" + name + ", description=" + description + ", projects=" + projects
+				+ ", status=" + status + "]";
 	}
 
+	
 	
 	
 	

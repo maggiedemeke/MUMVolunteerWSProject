@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gemasu.domain.Organization;
 import com.gemasu.domain.Project;
 import com.gemasu.domain.Status;
 import com.gemasu.domain.User;
@@ -50,12 +51,19 @@ public class ProjectService {
 	
 	public Collection<User> getAllUsersInProject(int id){
 		Collection<User> user = new ArrayList<User>();
+		
 		Project project = getProject(id);
 		user = project.getUser();
 		return user;
 		
 	}
 	
+	
+	public Organization getOrganization(int id){
+		Project project = getProject(id);
+		Organization organization = project.getOrganization();
+		return organization;
+	}
 	public void saveProject(Project project){
 		projectRepository.save(project);
 	}
