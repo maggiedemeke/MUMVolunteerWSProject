@@ -10,6 +10,12 @@ INSERT INTO `organization` (`id`, `name`, `status`,`description`) VALUES
 INSERT INTO `project` (`id`, `start_date`, `category`, `end_date`, `max_num_of_memebers`, `name`, `status`, `organization_id`,`description`) VALUES
 (1, '2017-08-08', 'TUTOR', '2017-08-23', 10, 'ENGLISH CLASSES', 'NEW', 1, 'This is a big project led by Maharishi Univeristy of Management');
 
+INSERT INTO `project` (`id`, `start_date`, `category`, `end_date`, `max_num_of_memebers`, `name`, `status`, `organization_id`,`description`) VALUES
+(2, '2017-08-09', 'EVENTS', '2017-08-30', 20, 'Planting trees', 'INPROGRESS', 1, 'This is another big project inprogress led by Maharishi Univeristy of Management');
+
+
+INSERT INTO `project` (`id`, `start_date`, `category`, `end_date`, `max_num_of_memebers`, `name`, `status`, `organization_id`,`description`) VALUES
+(3, '2016-08-09', 'EVENTS', '2016-08-30', 20, 'Planting trees', 'COMPLETED', 1, 'This is another big project completed led by Maharishi Univeristy of Management');
 
 INSERT INTO `activity` (`id`, `name`, `project_id`) VALUES
 	(1, 'tutorial1', 1),

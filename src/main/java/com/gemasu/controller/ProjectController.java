@@ -69,4 +69,9 @@ public class ProjectController {
 			
 		
 	}
+	@RequestMapping("/success/{id}")
+	public String UserRegisteredForProject(@PathVariable int id, User user) {
+		//Project project = projectService.getProject(id);
+		return "SuccessFulApplication";
+	}
 	}

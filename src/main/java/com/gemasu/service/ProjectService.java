@@ -31,10 +31,18 @@ public class ProjectService {
 	 */
 	public List<Project> getAllProjects(){
 		List<Project> projects = new ArrayList<Project>();
+	/*	List<Project> activeProjects = new ArrayList<Project>();
+		projects = projectRepository.findAll();
+		for(Project p: projects){
+			if(p.getStatus().equals(Status.INPROGRESS)|| p.getStatus().equals(Status.NEW) ){
+				activeProjects.add(p);
+			}
+			
+		}*/
 		projectRepository.findAll()
 		.forEach(projects::add);
 		return projects;
-			
+		//return activeProjects;	
 	}
 	
 	/*
