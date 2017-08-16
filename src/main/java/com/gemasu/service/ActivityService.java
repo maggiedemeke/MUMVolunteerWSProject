@@ -22,6 +22,8 @@ public class ActivityService {
 
 	@Autowired
 	ActivityRepository activityRepository;
+	
+	
 
 	public void saveActivity(Activity activity) {
 		activityRepository.save(activity);

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gemasu.domain.Activity;
 import com.gemasu.service.ActivityService;
 import com.gemasu.service.ProjectService;
+import com.gemasu.service.SenderService;
 
 @RestController
 @RequestMapping("/activity")
@@ -27,10 +28,14 @@ public class ActivityController {
 	@Autowired 
 	ProjectService projectService;
 	
+	@Autowired
+	SenderService senderService;
+	
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void create(@RequestBody Activity activity){
-		System.out.println("WS Activity Create: " + activity);
+		//System.out.println("WS Activity Create: " + activity);
+		senderService.send("boot.q", "There is a new activity: " + activity.getName().toString());
 		activityService.saveActivity(activity);
 	}
 	
