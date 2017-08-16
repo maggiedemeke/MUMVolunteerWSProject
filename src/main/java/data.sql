@@ -27,6 +27,6 @@ INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `hours`, `password
 
 
 INSERT INTO `role` (`id`, `role`, `user_id`) VALUES
-	(1, 'MEMBER', 1),
-	(2, 'ADMIN', 1);
+	(1, 'ROLE_MEMBER', 1),
+	(2, 'ROLE_ADMIN', 1);
 	
