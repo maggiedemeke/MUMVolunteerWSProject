@@ -17,6 +17,7 @@ import com.gemasu.domain.Project;
 import com.gemasu.domain.User;
 import com.gemasu.repository.UserRepository;
 import com.gemasu.service.ProjectService;
+import com.gemasu.service.SenderService;
 import com.gemasu.service.UserService;
 
 @RestController
@@ -27,12 +28,15 @@ public class ProjectController {
 	ProjectService projectService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	SenderService senderService;
 
 	/*
 	 * Create
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void create(@RequestBody Project project) {
+		senderService.send("boot.q", "There is a new project created");
 		projectService.saveProject(project);
 	}
 
