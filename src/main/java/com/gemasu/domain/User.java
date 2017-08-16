@@ -34,9 +34,7 @@ public class User {
     private String password;
     @Transient
     private String passwordConfirm;
-	@ManyToMany(mappedBy ="user")
-	@JsonProperty(access = Access.WRITE_ONLY)
-	public List<Project> projects;
+	
 	@OneToMany(fetch=javax.persistence.FetchType.EAGER, mappedBy="user", cascade = CascadeType.ALL)
     private Set<Role> roles;
 
@@ -104,14 +102,7 @@ public class User {
 		this.roles = roles;
 	}
 
-	public List<Project> getProjects() {
-		return projects;
-	}
-
-	public void setProjects(List<Project> projects) {
-		this.projects = projects;
-	}
-
+	
 	public int getId() {
 		return id;
 	}

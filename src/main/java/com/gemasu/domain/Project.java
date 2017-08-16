@@ -45,7 +45,8 @@ public class Project {
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
 
-	@OneToMany
+	@ManyToMany
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@JoinTable(name="userId", joinColumns = @JoinColumn(name = "ProjectId"),
 	inverseJoinColumns = @JoinColumn(name="userId"))
 	private Collection<User> user = new ArrayList<User>();
