@@ -80,6 +80,7 @@ public class ProjectController {
 		
 		project.getUser().add(user);
 		projectService.saveProject(project);
+		senderService.send("boot.q", "There is a new volunteer: " + user.getEmail());
 		return "SuccessFulApplication";
 	}
 	}
