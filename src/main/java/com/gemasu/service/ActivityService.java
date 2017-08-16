@@ -38,8 +38,8 @@ public class ActivityService {
 		activityRepository.save(activity);
 	}
 
-	public void removeActivityById(Integer id) {
-		activityRepository.removeById(id);
+	public void removeActivityById(int id) {
+		activityRepository.delete(getActivity(id));
 	}
 	
 	public void removeActivity(Activity activity) {
